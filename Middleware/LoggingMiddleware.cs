@@ -32,7 +32,6 @@ namespace Pi3CoreApi.Middleware
                 await _next(httpContext);
                 sw.Stop();
             }
-            // Never caught, because `LogException()` returns false.
             catch (Exception) 
             {
                 sw.Stop();
@@ -48,7 +47,6 @@ namespace Pi3CoreApi.Middleware
                 
                 var logs = _db.GetCollection<RequestLogItem>("RequestLogs");
                 logs.Insert(item);
-                
             }
         }
 
